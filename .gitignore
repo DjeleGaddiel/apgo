@@ -40,3 +40,5 @@ Thumbs.db
 __screenshots__/
 
 vitest.config.*.timestamp*
+# Client Prisma généré (npx nx run api:prisma-generate)
+apps/api/src/generated

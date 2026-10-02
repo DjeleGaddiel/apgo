@@ -1,0 +1,20 @@
+<footer *transloco="let t">
+  <div class="apgo-container content">
+    <div class="about">
+      <apgo-logo tone="dark" />
+      <p>{{ t('common.footer.about') }}</p>
+    </div>
+    <nav [attr.aria-label]="t('common.footer.linksLabel')">
+      <ul>
+        @for (link of links; track link.path) {
+        <li>
+          <a [routerLink]="link.path">{{ t(link.key) }}</a>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+  <div class="apgo-container rights">
+    <p>{{ t('common.footer.bibleRights') }}</p>
+  </div>
+</footer>

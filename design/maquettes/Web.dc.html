@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>APGO · Site public</title>
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Source+Serif+4:wght@400;700&amp;display=swap"
+        />
+        <style>
+          body {
+            margin: 0;
+          }
+          a {
+            color: #5b2a86;
+          }
+          a:hover {
+            color: #3e1b5e;
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          background: #ffffff;
+          font-family: Inter, 'Noto Sans', sans-serif;
+          color: #3e1b5e;
+          font-size: 16px;
+        "
+      >
+        <header style="border-bottom: 1px solid #e6dcf0">
+          <div
+            style="
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 14px 24px;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: space-between;
+              gap: 12px 24px;
+            "
+          >
+            <a
+              href="#accueil"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-decoration: none;
+                color: #3e1b5e;
+              "
+            >
+              <span
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 12px;
+                  background: #3e1b5e;
+                  color: #d4a017;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 700;
+                  font-size: 18px;
+                "
+                >A</span
+              >
+              <span
+                style="
+                  font-family: Poppins, sans-serif;
+                  font-weight: 700;
+                  font-size: 20px;
+                  letter-spacing: 0.04em;
+                "
+                >APGO</span
+              >
+            </a>
+            <nav
+              aria-label="Navigation principale"
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 4px 20px;
+              "
+            >
+              <a
+                href="#bible"
+                style="
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  text-decoration: none;
+                  font-weight: 500;
+                "
+                >Bible</a
+              >
+              <a
+                href="#formations"
+                style="
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  text-decoration: none;
+                  font-weight: 500;
+                "
+                >Formations</a
+              >
+              <a
+                href="#mediatheque"
+                style="
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  text-decoration: none;
+                  font-weight: 500;
+                "
+                >Médiathèque</a
+              >
+              <a
+                href="#association"
+                style="
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  text-decoration: none;
+                  font-weight: 500;
+                "
+                >L'association</a
+              >
+            </nav>
+            <div style="display: flex; gap: 10px">
+              <a
+                href="#connexion"
+                style="
+                  min-height: 44px;
+                  padding: 0 18px;
+                  display: inline-flex;
+                  align-items: center;
+                  border: 1.5px solid #5b2a86;
+                  border-radius: 8px;
+                  text-decoration: none;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 15px;
+                "
+                >Se connecter</a
+              >
+              <a
+                href="#inscription"
+                style="
+                  min-height: 44px;
+                  padding: 0 18px;
+                  display: inline-flex;
+                  align-items: center;
+                  border-radius: 8px;
+                  background: #5b2a86;
+                  color: #ffffff;
+                  text-decoration: none;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 15px;
+                "
+                >Créer un compte</a
+              >
+            </div>
+          </div>
+        </header>
+
+        <section id="accueil" style="background: #5b2a86; color: #ffffff">
+          <div
+            style="
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 88px 24px;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              gap: 48px;
+            "
+          >
+            <div
+              style="
+                flex: 999 1 520px;
+                min-width: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+              "
+            >
+              <span
+                style="
+                  align-self: flex-start;
+                  padding: 6px 12px;
+                  border-radius: 999px;
+                  background: #3e1b5e;
+                  color: #d4a017;
+                  font-size: 14px;
+                  font-weight: 500;
+                "
+                >Association du Peuple Gouro</span
+              >
+              <h1
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 700;
+                  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+                  line-height: 1.12;
+                "
+              >
+                La Parole, le savoir et la mémoire du peuple gouro, à portée de
+                main.
+              </h1>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 19px;
+                  line-height: 1.6;
+                  max-width: 560px;
+                "
+              >
+                Lisez et écoutez la Bible en gouro, suivez des formations
+                reconnues par un certificat et retrouvez nos vidéos et
+                enseignements, même sans connexion.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 12px">
+                <a
+                  href="#bible"
+                  style="
+                    min-height: 52px;
+                    padding: 0 24px;
+                    display: inline-flex;
+                    align-items: center;
+                    border-radius: 8px;
+                    background: #d4a017;
+                    color: #3e1b5e;
+                    text-decoration: none;
+                    font-family: Poppins, sans-serif;
+                    font-weight: 600;
+                    font-size: 17px;
+                  "
+                  >Lire la Bible</a
+                >
+                <a
+                  href="#formations"
+                  style="
+                    min-height: 52px;
+                    padding: 0 24px;
+                    display: inline-flex;
+                    align-items: center;
+                    border-radius: 8px;
+                    border: 1.5px solid #ffffff;
+                    color: #ffffff;
+                    text-decoration: none;
+                    font-family: Poppins, sans-serif;
+                    font-weight: 600;
+                    font-size: 17px;
+                  "
+                  >Voir les formations</a
+                >
+              </div>
+            </div>
+            <div
+              style="
+                flex: 1 1 340px;
+                min-width: 0;
+                background: #3e1b5e;
+                border-radius: 16px;
+                padding: 32px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+              "
+            >
+              <span
+                style="
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 14px;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: #d4a017;
+                "
+                >Verset du jour</span
+              >
+              <p
+                style="
+                  margin: 0;
+                  font-family: 'Source Serif 4', 'Noto Serif', serif;
+                  font-size: 22px;
+                  line-height: 1.55;
+                "
+              >
+                « La lumière luit dans les ténèbres, et les ténèbres ne l'ont
+                point reçue. »
+              </p>
+              <span style="font-size: 15px; opacity: 0.85"
+                >Jean 1.5 · LSG 1910</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="piliers"
+          style="
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+          "
+        >
+          <h2
+            id="piliers"
+            style="
+              margin: 0;
+              font-family: Poppins, sans-serif;
+              font-weight: 600;
+              font-size: clamp(1.6rem, 3vw, 2.2rem);
+            "
+          >
+            Ce que vous trouverez sur APGO
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 24px;
+            "
+          >
+            <article
+              id="bible"
+              style="
+                background: #f4eefa;
+                border-radius: 16px;
+                padding: 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <span
+                style="
+                  width: 52px;
+                  height: 52px;
+                  border-radius: 14px;
+                  background: #5b2a86;
+                  color: #ffffff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                ><svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"></path>
+                  <path
+                    d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"
+                  ></path></svg
+              ></span>
+              <h3
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 21px;
+                "
+              >
+                Bible gouro
+              </h3>
+              <p style="margin: 0; line-height: 1.6">
+                Le texte gouro et le français côte à côte, la lecture audio, et
+                le téléchargement pour lire hors connexion.
+              </p>
+              <a
+                href="#bible"
+                style="
+                  margin-top: auto;
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  font-weight: 500;
+                "
+                >Ouvrir la Bible</a
+              >
+            </article>
+            <article
+              id="formations"
+              style="
+                background: #f4eefa;
+                border-radius: 16px;
+                padding: 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <span
+                style="
+                  width: 52px;
+                  height: 52px;
+                  border-radius: 14px;
+                  background: #5b2a86;
+                  color: #ffffff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                ><svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M2 9l10-5 10 5-10 5z"></path>
+                  <path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg
+              ></span>
+              <h3
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 21px;
+                "
+              >
+                Formations avec certificat
+              </h3>
+              <p style="margin: 0; line-height: 1.6">
+                Des cours en ligne à votre rythme, des quiz pour vérifier vos
+                acquis et un certificat vérifiable à la fin.
+              </p>
+              <a
+                href="#formations"
+                style="
+                  margin-top: auto;
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  font-weight: 500;
+                "
+                >Voir le catalogue</a
+              >
+            </article>
+            <article
+              id="mediatheque"
+              style="
+                background: #f4eefa;
+                border-radius: 16px;
+                padding: 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <span
+                style="
+                  width: 52px;
+                  height: 52px;
+                  border-radius: 14px;
+                  background: #5b2a86;
+                  color: #ffffff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                ><svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <path d="M10 9l5 3-5 3z"></path></svg
+              ></span>
+              <h3
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 21px;
+                "
+              >
+                Médiathèque
+              </h3>
+              <p style="margin: 0; line-height: 1.6">
+                Vidéos, enseignements audio et documents, avec une version
+                allégée pour les petites connexions.
+              </p>
+              <a
+                href="#mediatheque"
+                style="
+                  margin-top: auto;
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  font-weight: 500;
+                "
+                >Explorer les médias</a
+              >
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="catalogue" style="background: #f4eefa">
+          <div
+            style="
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 80px 24px;
+              display: flex;
+              flex-direction: column;
+              gap: 28px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 12px;
+              "
+            >
+              <h2
+                id="catalogue"
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: clamp(1.6rem, 3vw, 2.2rem);
+                "
+              >
+                Formations à la une
+              </h2>
+              <a
+                href="#formations"
+                style="
+                  min-height: 44px;
+                  display: inline-flex;
+                  align-items: center;
+                  font-weight: 500;
+                "
+                >Toutes les formations</a
+              >
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 24px;
+              "
+            >
+              <sc-for list="{{courses}}" as="c" hint-placeholder-count="3">
+                <article
+                  style="
+                    background: #ffffff;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                  "
+                >
+                  <div
+                    style="
+                      height: 150px;
+                      background: #5b2a86;
+                      color: #ffffff;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      opacity: 0.95;
+                    "
+                  >
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M2 9l10-5 10 5-10 5z"></path>
+                      <path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path>
+                    </svg>
+                  </div>
+                  <div
+                    style="
+                      padding: 20px;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 8px;
+                    "
+                  >
+                    <span
+                      style="font-size: 14px; font-weight: 500; color: #5b2a86"
+                      >{{c.theme}}</span
+                    >
+                    <h3
+                      style="
+                        margin: 0;
+                        font-family: Poppins, sans-serif;
+                        font-weight: 600;
+                        font-size: 19px;
+                      "
+                    >
+                      {{c.title}}
+                    </h3>
+                    <span style="font-size: 15px">{{c.meta}}</span>
+                  </div>
+                </article>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="appli"
+          style="
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+          "
+        >
+          <div
+            style="
+              flex: 999 1 480px;
+              min-width: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+            "
+          >
+            <h2
+              id="appli"
+              style="
+                margin: 0;
+                font-family: Poppins, sans-serif;
+                font-weight: 600;
+                font-size: clamp(1.6rem, 3vw, 2.2rem);
+              "
+            >
+              Emportez APGO partout, même sans réseau
+            </h2>
+            <p
+              style="
+                margin: 0;
+                font-size: 18px;
+                line-height: 1.6;
+                max-width: 560px;
+              "
+            >
+              L'application mobile garde la Bible, vos leçons et vos médias sur
+              le téléphone. La taille de chaque téléchargement est affichée
+              avant de commencer.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px">
+              <a
+                href="#android"
+                style="
+                  min-height: 52px;
+                  padding: 0 22px;
+                  display: inline-flex;
+                  align-items: center;
+                  border-radius: 8px;
+                  background: #3e1b5e;
+                  color: #ffffff;
+                  text-decoration: none;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                "
+                >Télécharger pour Android</a
+              >
+              <a
+                href="#ios"
+                style="
+                  min-height: 52px;
+                  padding: 0 22px;
+                  display: inline-flex;
+                  align-items: center;
+                  border-radius: 8px;
+                  border: 1.5px solid #3e1b5e;
+                  color: #3e1b5e;
+                  text-decoration: none;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                "
+                >Télécharger pour iPhone</a
+              >
+            </div>
+          </div>
+          <div
+            style="
+              flex: 1 1 280px;
+              min-width: 0;
+              display: flex;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                width: 220px;
+                height: 400px;
+                border-radius: 32px;
+                border: 8px solid #3e1b5e;
+                background: #f4eefa;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+              "
+            >
+              <div style="height: 96px; background: #5b2a86"></div>
+              <div
+                style="
+                  margin: -24px 14px 0;
+                  height: 120px;
+                  border-radius: 12px;
+                  background: #3e1b5e;
+                "
+              ></div>
+              <div
+                style="
+                  margin: 16px 14px 0;
+                  height: 56px;
+                  border-radius: 10px;
+                  background: #ffffff;
+                "
+              ></div>
+              <div
+                style="
+                  margin: 10px 14px 0;
+                  height: 56px;
+                  border-radius: 10px;
+                  background: #ffffff;
+                "
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <footer id="association" style="background: #3e1b5e; color: #ffffff">
+          <div
+            style="
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 56px 24px 32px;
+              display: flex;
+              flex-direction: column;
+              gap: 32px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 32px;
+              "
+            >
+              <div
+                style="
+                  flex: 1 1 280px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <span
+                  style="
+                    font-family: Poppins, sans-serif;
+                    font-weight: 700;
+                    font-size: 22px;
+                    color: #d4a017;
+                    letter-spacing: 0.04em;
+                  "
+                  >APGO</span
+                >
+                <p style="margin: 0; line-height: 1.6; max-width: 360px">
+                  Association du Peuple Gouro. [Une phrase sur la mission de
+                  l'association.]
+                </p>
+              </div>
+              <nav
+                aria-label="Liens du pied de page"
+                style="
+                  flex: 1 1 200px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 4px;
+                "
+              >
+                <a
+                  href="#association"
+                  style="
+                    color: #ffffff;
+                    min-height: 36px;
+                    display: inline-flex;
+                    align-items: center;
+                  "
+                  >L'association</a
+                >
+                <a
+                  href="#contact"
+                  style="
+                    color: #ffffff;
+                    min-height: 36px;
+                    display: inline-flex;
+                    align-items: center;
+                  "
+                  >Nous contacter</a
+                >
+                <a
+                  href="#aide"
+                  style="
+                    color: #ffffff;
+                    min-height: 36px;
+                    display: inline-flex;
+                    align-items: center;
+                  "
+                  >Aide et service client</a
+                >
+                <a
+                  href="#confidentialite"
+                  style="
+                    color: #ffffff;
+                    min-height: 36px;
+                    display: inline-flex;
+                    align-items: center;
+                  "
+                  >Confidentialité</a
+                >
+              </nav>
+              <div
+                style="
+                  flex: 1 1 200px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                "
+              >
+                <span style="font-weight: 500">Langue</span>
+                <div style="display: flex; gap: 8px">
+                  <button
+                    aria-pressed="true"
+                    style="
+                      min-height: 44px;
+                      padding: 0 16px;
+                      border-radius: 8px;
+                      border: 1.5px solid #d4a017;
+                      background: #d4a017;
+                      color: #3e1b5e;
+                      font: inherit;
+                      font-weight: 500;
+                      cursor: pointer;
+                    "
+                  >
+                    Français
+                  </button>
+                  <button
+                    aria-pressed="false"
+                    style="
+                      min-height: 44px;
+                      padding: 0 16px;
+                      border-radius: 8px;
+                      border: 1.5px solid #ffffff;
+                      background: transparent;
+                      color: #ffffff;
+                      font: inherit;
+                      font-weight: 500;
+                      cursor: pointer;
+                    "
+                  >
+                    Gouro
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p
+              style="
+                margin: 0;
+                font-size: 14px;
+                opacity: 0.85;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                padding-top: 20px;
+              "
+            >
+              Texte biblique gouro © Alliance Biblique de Côte d'Ivoire. Louis
+              Segond 1910, domaine public.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"$preview":{"width":1280,"height":2080}}'
+    >
+      class Component extends DCLogic {
+        renderVals() {
+          return {
+            courses: [
+              { theme: '[Thème]', title: '[Titre de la formation]', meta: '[nb] leçons · certificat' },
+              { theme: '[Thème]', title: '[Titre de la formation]', meta: '[nb] leçons · certificat' },
+              { theme: '[Thème]', title: '[Titre de la formation]', meta: '[nb] leçons · certificat' }
+            ]
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

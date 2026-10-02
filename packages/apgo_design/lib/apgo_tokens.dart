@@ -12,8 +12,18 @@ abstract final class ApgoColors {
   static const accent = Color(0xFFD4A017);
   /// Blanc : fonds de page, cartes, zones de lecture
   static const background = Color(0xFFFFFFFF);
+  /// Fond de l'administration, derrière les cartes blanches
+  static const surface = Color(0xFFFAF7FD);
+  /// Texte et icônes posés sur le violet ou le violet foncé
+  static const onPrimary = Color(0xFFFFFFFF);
   /// Texte courant
   static const text = Color(0xFF3E1B5E);
+  /// Texte secondaire : dates, durées, onglets inactifs (contraste 5,9:1 sur blanc)
+  static const textMuted = Color(0xFF6B5A7B);
+  /// Séparateurs et bordures de cartes
+  static const border = Color(0xFFE6DCF0);
+  /// Bordures de champs et de boutons secondaires (contraste 3,9:1 sur blanc, minimum WCAG 3:1)
+  static const borderStrong = Color(0xFF8C78A1);
   /// Messages système uniquement
   static const success = Color(0xFF2E7D32);
   /// Messages système uniquement

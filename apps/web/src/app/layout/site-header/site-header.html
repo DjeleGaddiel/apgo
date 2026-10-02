@@ -1,0 +1,50 @@
+<header *transloco="let t">
+  <div class="apgo-container bar">
+    <a routerLink="/" class="brand" [attr.aria-label]="t('common.logoLabel')">
+      <apgo-logo />
+    </a>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-controls="site-menu"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="
+        menuOpen() ? t('common.nav.closeMenu') : t('common.nav.openMenu')
+      "
+      (click)="toggleMenu()"
+    >
+      <apgo-icon [name]="menuOpen() ? 'close' : 'menu'" />
+    </button>
+
+    <div id="site-menu" class="menu" [class.open]="menuOpen()">
+      <nav [attr.aria-label]="t('common.nav.label')">
+        <ul>
+          @for (link of links; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              (click)="closeMenu()"
+              >{{ t(link.key) }}</a
+            >
+          </li>
+          }
+        </ul>
+      </nav>
+      <div class="account">
+        <a
+          apgoButton
+          variant="secondary"
+          routerLink="/connexion"
+          (click)="closeMenu()"
+          >{{ t('common.account.login') }}</a
+        >
+        <a apgoButton routerLink="/inscription" (click)="closeMenu()"
+          >{{ t('common.account.register') }}</a
+        >
+      </div>
+    </div>
+  </div>
+</header>

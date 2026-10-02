@@ -17,3 +17,29 @@ h3,
 button {
   font-family: var(--apgo-font-heading);
 }
+
+a {
+  color: var(--apgo-color-primary);
+
+  &:hover {
+    color: var(--apgo-color-primary-dark);
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--apgo-color-primary-dark);
+  outline-offset: 2px;
+}
+
+// Largeur de lecture commune à toutes les pages.
+.apgo-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--apgo-spacing-md);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--apgo-spacing-lg);
+  }
+}

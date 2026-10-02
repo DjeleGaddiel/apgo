@@ -1,0 +1,64 @@
+<ng-container *transloco="let t; prefix: 'home'">
+  <section class="hero">
+    <div class="apgo-container hero-inner">
+      <div class="hero-text">
+        <apgo-badge tone="on-dark">{{ t('hero.badge') }}</apgo-badge>
+        <h1>{{ t('hero.title') }}</h1>
+        <p class="intro">{{ t('hero.intro') }}</p>
+        <div class="actions">
+          <a apgoButton variant="accent" size="lg" routerLink="/bible"
+            >{{ t('hero.readBible') }}</a
+          >
+          <a apgoButton variant="inverse" size="lg" routerLink="/formations"
+            >{{ t('hero.seeCourses') }}</a
+          >
+        </div>
+      </div>
+      <apgo-verse-card
+        class="hero-verse"
+        [label]="t('verse.label')"
+        [text]="t('verse.text')"
+        [reference]="t('verse.reference')"
+      />
+    </div>
+  </section>
+
+  <section class="apgo-container pillars" aria-labelledby="pillars-title">
+    <h2 id="pillars-title">{{ t('pillars.title') }}</h2>
+    <ul>
+      @for (pillar of pillars; track pillar.key) {
+      <li>
+        <apgo-card tone="light">
+          <span class="pillar-icon">
+            <apgo-icon [name]="pillar.icon" [size]="26" />
+          </span>
+          <h3>{{ t('pillars.' + pillar.key + '.title') }}</h3>
+          <p>{{ t('pillars.' + pillar.key + '.text') }}</p>
+          <a class="pillar-link" [routerLink]="pillar.path"
+            >{{ t('pillars.' + pillar.key + '.link') }}</a
+          >
+        </apgo-card>
+      </li>
+      }
+    </ul>
+  </section>
+
+  <section class="app" aria-labelledby="app-title">
+    <div class="apgo-container app-inner">
+      <div class="app-text">
+        <h2 id="app-title">{{ t('app.title') }}</h2>
+        <p>{{ t('app.text') }}</p>
+        <p class="soon">
+          <apgo-icon name="download" />
+          {{ t('app.soon') }}
+        </p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <span class="phone-header"></span>
+        <span class="phone-verse"></span>
+        <span class="phone-row"></span>
+        <span class="phone-row"></span>
+      </div>
+    </div>
+  </section>
+</ng-container>

@@ -6,6 +6,10 @@ avec certificat, Bible gouro (texte, audio, hors-ligne), administration et servi
 Documents de référence dans `docs/` : cahier des charges (`docs/cadrage/`), architecture
 (`docs/architecture/`), courriers aux partenaires (`docs/courriers/`).
 
+Suivi de l'avancement dans `docs/suivi/` (un fichier par projet). À chaque tâche terminée,
+cocher la case correspondante et compléter l'historique de `docs/suivi/README.md`, dans le
+même commit que le code.
+
 ## Structure (monorepo Nx, npm)
 
 | Dossier                     | Contenu                                                                   |
@@ -15,10 +19,12 @@ Documents de référence dans `docs/` : cahier des charges (`docs/cadrage/`), ar
 | `apps/admin`                | Angular : administration et service client (port 4300)                    |
 | `apps/mobile`               | Flutter (cibles Nx : `setup`, `get`, `serve`, `lint`, `test`, `build`)    |
 | `libs/ui`                   | Composants Angular partagés, styles et tokens (`src/styles/_tokens.scss`) |
+| `libs/i18n`                 | Traductions Angular (Transloco) : `<langue>/<domaine>.json`               |
 | `libs/util`                 | Fonctions TypeScript partagées                                            |
 | `packages/apgo_design`      | Tokens de design pour Flutter (généré)                                    |
 | `packages/apgo_api`         | Client Dart de l'API (généré)                                             |
 | `design/tokens/tokens.json` | Source unique des couleurs, polices, tailles                              |
+| `design/maquettes/`         | Maquettes de référence des écrans (voir son README)                       |
 | `content/bible/`            | Sources USFM de la Bible, un dossier par version                          |
 | `tools/`                    | `codegen`, `bible-import`, `media-migration`                              |
 | `infra/`                    | `docker-compose.yml` (PostgreSQL, Redis, Meilisearch), déploiement        |

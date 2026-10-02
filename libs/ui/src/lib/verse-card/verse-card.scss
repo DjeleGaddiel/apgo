@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  padding: var(--apgo-spacing-lg);
+  border-radius: var(--apgo-radius-lg);
+  background: var(--apgo-color-primary-dark);
+  color: var(--apgo-color-on-primary);
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apgo-spacing-md);
+  margin: 0;
+}
+
+.label {
+  font-family: var(--apgo-font-heading);
+  font-size: var(--apgo-font-size-base);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--apgo-color-accent);
+}
+
+blockquote {
+  margin: 0;
+
+  p {
+    margin: 0;
+    font-family: var(--apgo-font-reading);
+    font-size: var(--apgo-font-size-xl);
+    line-height: 1.55;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--apgo-spacing-md);
+}
+
+cite {
+  font-style: normal;
+}

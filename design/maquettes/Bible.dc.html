@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>APGO · Bible</title>
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Source+Serif+4:wght@400;700&amp;display=swap"
+        />
+        <style>
+          body {
+            margin: 0;
+          }
+          a {
+            color: #5b2a86;
+          }
+          a:hover {
+            color: #3e1b5e;
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          width: 390px;
+          height: 844px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          background: #ffffff;
+          font-family: Inter, 'Noto Sans', sans-serif;
+          color: #3e1b5e;
+          font-size: 16px;
+          overflow: hidden;
+        "
+      >
+        <header
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 12px 12px 8px;
+            border-bottom: 1px solid #e6dcf0;
+          "
+        >
+          <button
+            style="
+              min-height: 44px;
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              padding: 0 12px;
+              border: 0;
+              border-radius: 8px;
+              background: #f4eefa;
+              color: #3e1b5e;
+              font-family: Poppins, sans-serif;
+              font-weight: 600;
+              font-size: 17px;
+              cursor: pointer;
+            "
+          >
+            Jean 1
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+          <div style="display: flex; gap: 4px">
+            <button
+              aria-label="Taille du texte"
+              style="
+                width: 44px;
+                height: 44px;
+                border: 0;
+                border-radius: 8px;
+                background: transparent;
+                color: #5b2a86;
+                font-family: 'Source Serif 4', serif;
+                font-weight: 700;
+                font-size: 18px;
+                cursor: pointer;
+              "
+            >
+              Aa
+            </button>
+            <button
+              aria-label="Rechercher"
+              style="
+                width: 44px;
+                height: 44px;
+                border: 0;
+                border-radius: 8px;
+                background: transparent;
+                color: #5b2a86;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="M20 20l-4-4"></path>
+              </svg>
+            </button>
+            <button
+              aria-label="Télécharger pour lire hors connexion"
+              style="
+                width: 44px;
+                height: 44px;
+                border: 0;
+                border-radius: 8px;
+                background: transparent;
+                color: #5b2a86;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+              "
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3v12"></path>
+                <path d="M7 10l5 5 5-5"></path>
+                <path d="M4 20h16"></path>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div
+          role="tablist"
+          aria-label="Version"
+          style="
+            display: flex;
+            margin: 12px 16px 0;
+            padding: 4px;
+            border-radius: 12px;
+            background: #f4eefa;
+          "
+        >
+          <sc-for list="{{versions}}" as="v" hint-placeholder-count="2">
+            <button
+              role="tab"
+              aria-selected="{{v.selected}}"
+              onClick="{{v.pick}}"
+              style="{{v.style}}"
+            >
+              {{v.label}}
+            </button>
+          </sc-for>
+        </div>
+
+        <main style="flex: 1; overflow: hidden; padding: 20px 24px 0">
+          <h1
+            style="
+              margin: 0 0 16px;
+              font-family: 'Source Serif 4', 'Noto Serif', serif;
+              font-weight: 700;
+              font-size: 26px;
+            "
+          >
+            {{chapterTitle}}
+          </h1>
+          <sc-if value="{{isGouro}}" hint-placeholder-val="{{ false }}">
+            <p
+              style="
+                margin: 0;
+                padding: 16px;
+                border-radius: 12px;
+                background: #f4eefa;
+                font-size: 16px;
+                line-height: 1.5;
+              "
+            >
+              Texte gouro de l'Alliance Biblique de Côte d'Ivoire : [à importer
+              depuis les fichiers officiels].
+            </p>
+          </sc-if>
+          <sc-if value="{{isLsg}}" hint-placeholder-val="{{ true }}">
+            <div style="{{textStyle}}">
+              <sc-for list="{{verses}}" as="vs" hint-placeholder-count="6">
+                <p style="margin: 0 0 10px">
+                  <sup
+                    style="
+                      font-family: Inter, sans-serif;
+                      font-size: 12px;
+                      font-weight: 500;
+                      color: #5b2a86;
+                      margin-right: 4px;
+                    "
+                    >{{vs.n}}</sup
+                  >{{vs.t}}
+                </p>
+              </sc-for>
+            </div>
+          </sc-if>
+        </main>
+
+        <section
+          aria-label="Lecture audio"
+          style="
+            margin: 0 12px 8px;
+            padding: 10px 12px;
+            border-radius: 16px;
+            background: #3e1b5e;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          "
+        >
+          <button
+            aria-label="{{playLabel}}"
+            onClick="{{togglePlay}}"
+            style="
+              width: 48px;
+              height: 48px;
+              flex: none;
+              border: 0;
+              border-radius: 24px;
+              background: #d4a017;
+              color: #3e1b5e;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+            "
+          >
+            <sc-if value="{{playing}}" hint-placeholder-val="{{ false }}">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <rect x="6" y="5" width="4" height="14" rx="1"></rect>
+                <rect x="14" y="5" width="4" height="14" rx="1"></rect>
+              </svg>
+            </sc-if>
+            <sc-if value="{{paused}}" hint-placeholder-val="{{ true }}">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M7 4l13 8-13 8z"></path>
+              </svg>
+            </sc-if>
+          </button>
+          <div
+            style="
+              flex: 1;
+              min-width: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 6px;
+            "
+          >
+            <span style="font-size: 15px; font-weight: 500"
+              >Écouter Jean 1</span
+            >
+            <div
+              style="
+                height: 4px;
+                border-radius: 2px;
+                background: rgba(255, 255, 255, 0.25);
+              "
+            >
+              <div
+                style="
+                  width: 22%;
+                  height: 100%;
+                  border-radius: 2px;
+                  background: #d4a017;
+                "
+              ></div>
+            </div>
+            <span style="font-size: 13px; opacity: 0.85"
+              >[0:00] / [durée] · [taille] Mo</span
+            >
+          </div>
+        </section>
+
+        <nav
+          aria-label="Navigation principale"
+          style="
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #e6dcf0;
+            background: #ffffff;
+            padding: 6px 4px 14px;
+          "
+        >
+          <a
+            href="Main.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
+              ></path></svg
+            >Accueil
+          </a>
+          <a
+            href="Bible.dc.html"
+            aria-current="page"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #5b2a86;
+              text-decoration: none;
+              font-size: 13px;
+              font-weight: 500;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"></path>
+              <path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"></path></svg
+            >Bible
+          </a>
+          <a
+            href="Formation.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 9l10-5 10 5-10 5z"></path>
+              <path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg
+            >Formations
+          </a>
+          <a
+            href="Mediatheque.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M10 9l5 3-5 3z"></path></svg
+            >Médias
+          </a>
+          <a
+            href="#compte"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path></svg
+            >Compte
+          </a>
+        </nav>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"textSize":{"editor":"range","default":19,"min":16,"max":26,"step":1,"unit":"px"},"$preview":{"width":390,"height":844}}'
+    >
+      class Component extends DCLogic {
+        constructor(props) {
+          super(props);
+          this.state = { version: 'lsg', playing: false };
+        }
+        renderVals() {
+          const size = this.props.textSize ?? 19;
+          const cur = this.state.version;
+          const base = 'flex: 1; min-height: 44px; border: 0; border-radius: 8px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; ';
+          const versions = [
+            { id: 'lsg', label: 'Français · LSG 1910' },
+            { id: 'gouro', label: 'Gouro · 1979' }
+          ].map((v) => ({
+            ...v,
+            selected: v.id === cur ? 'true' : 'false',
+            style: base + (v.id === cur ? 'background: #5B2A86; color: #FFFFFF;' : 'background: transparent; color: #3E1B5E;'),
+            pick: () => this.setState({ version: v.id })
+          }));
+          return {
+            versions,
+            isLsg: cur === 'lsg',
+            isGouro: cur === 'gouro',
+            chapterTitle: cur === 'lsg' ? 'Jean 1' : '[Jean 1 en gouro]',
+            playing: this.state.playing,
+            paused: !this.state.playing,
+            playLabel: this.state.playing ? 'Mettre en pause' : 'Lire l’audio',
+            togglePlay: () => this.setState({ playing: !this.state.playing }),
+            textStyle: 'font-family: \'Source Serif 4\', \'Noto Serif\', serif; font-size: ' + size + 'px; line-height: 1.65;',
+            verses: [
+              { n: 1, t: 'Au commencement était la Parole, et la Parole était avec Dieu, et la Parole était Dieu.' },
+              { n: 2, t: 'Elle était au commencement avec Dieu.' },
+              { n: 3, t: 'Toutes choses ont été faites par elle, et rien de ce qui a été fait n’a été fait sans elle.' },
+              { n: 4, t: 'En elle était la vie, et la vie était la lumière des hommes.' },
+              { n: 5, t: 'La lumière luit dans les ténèbres, et les ténèbres ne l’ont point reçue.' },
+              { n: 6, t: 'Il y eut un homme envoyé de Dieu: son nom était Jean.' },
+              { n: 7, t: 'Il vint pour servir de témoin, pour rendre témoignage à la lumière, afin que tous crussent par lui.' }
+            ]
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--apgo-spacing-sm);
+  left: var(--apgo-spacing-sm);
+  z-index: 10;
+  padding: var(--apgo-spacing-sm) var(--apgo-spacing-md);
+  border-radius: var(--apgo-radius-md);
+  background: var(--apgo-color-primary-dark);
+  color: var(--apgo-color-on-primary);
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+}

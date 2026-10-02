@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>APGO · Médiathèque</title>
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Source+Serif+4:wght@400;700&amp;display=swap"
+        />
+        <style>
+          body {
+            margin: 0;
+          }
+          a {
+            color: #5b2a86;
+          }
+          a:hover {
+            color: #3e1b5e;
+          }
+          input::placeholder {
+            color: #6b5a7b;
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          width: 390px;
+          height: 844px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          background: #ffffff;
+          font-family: Inter, 'Noto Sans', sans-serif;
+          color: #3e1b5e;
+          font-size: 16px;
+          overflow: hidden;
+        "
+      >
+        <header
+          style="
+            padding: 20px 16px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          "
+        >
+          <h1
+            style="
+              margin: 0;
+              font-family: Poppins, sans-serif;
+              font-weight: 600;
+              font-size: 26px;
+            "
+          >
+            Médiathèque
+          </h1>
+          <label
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 6px;
+              font-size: 14px;
+              font-weight: 500;
+            "
+          >
+            Rechercher
+            <span
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                min-height: 48px;
+                padding: 0 14px;
+                border: 1.5px solid #c9b8da;
+                border-radius: 8px;
+                color: #5b2a86;
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="M20 20l-4-4"></path>
+              </svg>
+              <input
+                type="search"
+                placeholder="Titre, thème, intervenant"
+                style="
+                  flex: 1;
+                  min-width: 0;
+                  border: 0;
+                  outline: none;
+                  font: inherit;
+                  font-size: 16px;
+                  font-weight: 400;
+                  color: #3e1b5e;
+                  background: transparent;
+                "
+              />
+            </span>
+          </label>
+          <div
+            role="group"
+            aria-label="Filtrer par type"
+            style="display: flex; gap: 8px"
+          >
+            <sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+              <button
+                aria-pressed="{{f.pressed}}"
+                onClick="{{f.pick}}"
+                style="{{f.style}}"
+              >
+                {{f.label}}
+              </button>
+            </sc-for>
+          </div>
+        </header>
+
+        <main style="flex: 1; overflow: hidden; padding: 4px 16px 0">
+          <ul
+            style="
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+            "
+          >
+            <sc-for list="{{items}}" as="it" hint-placeholder-count="5">
+              <li
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 10px 0;
+                  border-bottom: 1px solid #f0e8f7;
+                "
+              >
+                <div
+                  style="
+                    width: 72px;
+                    height: 56px;
+                    flex: none;
+                    border-radius: 8px;
+                    background: #f4eefa;
+                    color: #5b2a86;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <sc-if
+                    value="{{it.isVideo}}"
+                    hint-placeholder-val="{{ true }}"
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                      <path d="M10 9l5 3-5 3z"></path>
+                    </svg>
+                  </sc-if>
+                  <sc-if
+                    value="{{it.isAudio}}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 14v-2a9 9 0 0 1 18 0v2"></path>
+                      <rect x="3" y="14" width="4" height="6" rx="1"></rect>
+                      <rect x="17" y="14" width="4" height="6" rx="1"></rect>
+                    </svg>
+                  </sc-if>
+                  <sc-if
+                    value="{{it.isDoc}}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M6 3h8l4 4v14H6z"></path>
+                      <path d="M14 3v4h4"></path>
+                      <path d="M9 13h6M9 17h6"></path>
+                    </svg>
+                  </sc-if>
+                </div>
+                <div
+                  style="
+                    flex: 1;
+                    min-width: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                  "
+                >
+                  <span style="font-weight: 500">{{it.title}}</span>
+                  <span style="font-size: 14px; color: #6b5a7b"
+                    >{{it.meta}}</span
+                  >
+                </div>
+                <sc-if value="{{it.saved}}" hint-placeholder-val="{{ false }}">
+                  <span
+                    aria-label="Disponible hors connexion"
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      flex: none;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      color: #2e7d32;
+                    "
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path d="M8 12l3 3 5-6"></path>
+                    </svg>
+                  </span>
+                </sc-if>
+                <sc-if
+                  value="{{it.notSaved}}"
+                  hint-placeholder-val="{{ true }}"
+                >
+                  <button
+                    aria-label="{{it.dlLabel}}"
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      flex: none;
+                      border: 0;
+                      border-radius: 22px;
+                      background: transparent;
+                      color: #5b2a86;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      cursor: pointer;
+                    "
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 3v12"></path>
+                      <path d="M7 10l5 5 5-5"></path>
+                      <path d="M4 20h16"></path>
+                    </svg>
+                  </button>
+                </sc-if>
+              </li>
+            </sc-for>
+          </ul>
+        </main>
+
+        <nav
+          aria-label="Navigation principale"
+          style="
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #e6dcf0;
+            background: #ffffff;
+            padding: 6px 4px 14px;
+          "
+        >
+          <a
+            href="Main.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
+              ></path></svg
+            >Accueil
+          </a>
+          <a
+            href="Bible.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"></path>
+              <path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"></path></svg
+            >Bible
+          </a>
+          <a
+            href="Formation.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 9l10-5 10 5-10 5z"></path>
+              <path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg
+            >Formations
+          </a>
+          <a
+            href="Mediatheque.dc.html"
+            aria-current="page"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #5b2a86;
+              text-decoration: none;
+              font-size: 13px;
+              font-weight: 500;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M10 9l5 3-5 3z"></path></svg
+            >Médias
+          </a>
+          <a
+            href="#compte"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path></svg
+            >Compte
+          </a>
+        </nav>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"$preview":{"width":390,"height":844}}'
+    >
+      class Component extends DCLogic {
+        constructor(props) {
+          super(props);
+          this.state = { filter: 'all' };
+        }
+        renderVals() {
+          const cur = this.state.filter;
+          const base = 'min-height: 44px; padding: 0 14px; border-radius: 999px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; ';
+          const filters = [
+            { id: 'all', label: 'Tout' },
+            { id: 'video', label: 'Vidéos' },
+            { id: 'audio', label: 'Audio' },
+            { id: 'doc', label: 'Documents' }
+          ].map((f) => ({
+            ...f,
+            pressed: f.id === cur ? 'true' : 'false',
+            style: base + (f.id === cur ? 'background: #5B2A86; color: #FFFFFF; border: 1.5px solid #5B2A86;' : 'background: #FFFFFF; color: #3E1B5E; border: 1.5px solid #C9B8DA;'),
+            pick: () => this.setState({ filter: f.id })
+          }));
+          const all = [
+            { type: 'video', title: '[Titre de la vidéo]', meta: 'Vidéo · [durée] · version allégée [taille] Mo', saved: true },
+            { type: 'audio', title: '[Titre de l’enseignement]', meta: 'Audio · [durée] · [taille] Mo', saved: false },
+            { type: 'doc', title: '[Titre du document]', meta: 'PDF · [nb] pages · [taille] Mo', saved: false },
+            { type: 'video', title: '[Titre de la vidéo]', meta: 'Vidéo · [durée] · version allégée [taille] Mo', saved: false },
+            { type: 'audio', title: '[Chant en gouro]', meta: 'Audio · [durée] · [taille] Mo', saved: true },
+            { type: 'doc', title: '[Titre du document]', meta: 'PDF · [nb] pages · [taille] Mo', saved: false }
+          ];
+          return {
+            filters,
+            items: all.filter((i) => cur === 'all' || i.type === cur).map((i) => ({
+              ...i,
+              isVideo: i.type === 'video',
+              isAudio: i.type === 'audio',
+              isDoc: i.type === 'doc',
+              notSaved: !i.saved,
+              dlLabel: 'Télécharger ' + i.title
+            }))
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
