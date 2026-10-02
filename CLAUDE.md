@@ -6,6 +6,10 @@ avec certificat, Bible gouro (texte, audio, hors-ligne), administration et servi
 Documents de référence dans `docs/` : cahier des charges (`docs/cadrage/`), architecture
 (`docs/architecture/`), courriers aux partenaires (`docs/courriers/`).
 
+Suivi de l'avancement dans `docs/suivi/` (un fichier par projet). À chaque tâche terminée,
+cocher la case correspondante et compléter l'historique de `docs/suivi/README.md`, dans le
+même commit que le code.
+
 ## Structure (monorepo Nx, npm)
 
 | Dossier                     | Contenu                                                                   |
