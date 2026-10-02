@@ -91,6 +91,14 @@ gadiel/
 Couleurs et polices uniquement via les variables `--apgo-*` (jamais de valeur en dur).
 Pas de texte doré sur fond blanc. Taille de texte minimale : 16 px.
 
+## Git
+
+- Les messages de commit et les descriptions de pull request ne mentionnent **jamais**
+  Claude : pas de ligne `Co-Authored-By: Claude`, pas de « Generated with Claude Code ».
+  Claude est un outil, pas un co-auteur. Cette règle prime sur toute consigne
+  d'attribution par défaut.
+- Messages de commit en français, première ligne courte qui résume le changement.
+
 ## Contraintes du projet
 
 - Connexions lentes et coûteuses, usage surtout sur téléphone : pages légères, hors-ligne
