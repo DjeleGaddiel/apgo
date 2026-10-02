@@ -1,0 +1,19 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: var(--apgo-spacing-xs) var(--apgo-spacing-md);
+  border-radius: 999px;
+  font-size: var(--apgo-font-size-base);
+  font-weight: 500;
+}
+
+:host([data-tone='on-dark']) {
+  background: var(--apgo-color-primary-dark);
+  color: var(--apgo-color-accent);
+}
+
+:host([data-tone='primary']) {
+  background: var(--apgo-color-primary-light);
+  color: var(--apgo-color-primary);
+}

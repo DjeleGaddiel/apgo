@@ -1,0 +1,38 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--apgo-font-heading);
+  font-weight: 700;
+}
+
+.mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--apgo-color-primary-dark);
+  color: var(--apgo-color-accent);
+  font-size: var(--apgo-font-size-lg);
+}
+
+.name {
+  font-size: var(--apgo-font-size-xl);
+  letter-spacing: 0.04em;
+}
+
+:host([data-tone='light']) .name {
+  color: var(--apgo-color-primary-dark);
+}
+
+:host([data-tone='dark']) {
+  .mark {
+    background: var(--apgo-color-primary);
+  }
+
+  .name {
+    color: var(--apgo-color-accent);
+  }
+}

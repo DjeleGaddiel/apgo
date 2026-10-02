@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apgo-spacing-md);
+  padding: var(--apgo-spacing-lg);
+  border-radius: var(--apgo-radius-lg);
+}
+
+:host([data-tone='light']) {
+  background: var(--apgo-color-primary-light);
+  color: var(--apgo-color-text);
+}
+
+:host([data-tone='white']) {
+  background: var(--apgo-color-background);
+  border: 1px solid var(--apgo-color-border);
+  color: var(--apgo-color-text);
+}
+
+:host([data-tone='dark']) {
+  background: var(--apgo-color-primary-dark);
+  color: var(--apgo-color-on-primary);
+}

@@ -1,0 +1,33 @@
+{
+  "common": {
+    "skipToContent": "Aller au contenu",
+    "logoLabel": "APGO, retour à l'accueil",
+    "nav": {
+      "label": "Navigation principale",
+      "bible": "Bible",
+      "courses": "Formations",
+      "media": "Médiathèque",
+      "association": "L'association",
+      "openMenu": "Ouvrir le menu",
+      "closeMenu": "Fermer le menu"
+    },
+    "account": {
+      "login": "Se connecter",
+      "register": "Créer un compte"
+    },
+    "notFound": {
+      "title": "Page introuvable",
+      "text": "Cette page n'existe pas ou n'est pas encore disponible.",
+      "backHome": "Revenir à l'accueil"
+    },
+    "footer": {
+      "about": "Plateforme de l'Association du Peuple Gouro : Bible gouro, formations avec certificat et médiathèque.",
+      "linksLabel": "Liens utiles",
+      "association": "L'association",
+      "contact": "Nous contacter",
+      "help": "Aide et service client",
+      "privacy": "Confidentialité",
+      "bibleRights": "Texte biblique gouro © Alliance Biblique de Côte d'Ivoire. Louis Segond 1910 : domaine public."
+    }
+  }
+}

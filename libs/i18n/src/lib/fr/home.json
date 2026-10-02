@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "badge": "Association du Peuple Gouro",
+    "title": "La Parole, le savoir et la mémoire du peuple gouro, à portée de main.",
+    "intro": "Lisez et écoutez la Bible en gouro, suivez des formations reconnues par un certificat et retrouvez nos vidéos et enseignements, même sans connexion.",
+    "readBible": "Lire la Bible",
+    "seeCourses": "Voir les formations"
+  },
+  "verse": {
+    "label": "Verset du jour",
+    "text": "La lumière luit dans les ténèbres, et les ténèbres ne l'ont point reçue.",
+    "reference": "Jean 1.5 · LSG 1910"
+  },
+  "pillars": {
+    "title": "Ce que vous trouverez sur APGO",
+    "bible": {
+      "title": "Bible gouro",
+      "text": "Le texte gouro et le français côte à côte, la lecture audio et le téléchargement pour lire hors connexion.",
+      "link": "Ouvrir la Bible"
+    },
+    "courses": {
+      "title": "Formations avec certificat",
+      "text": "Des cours en ligne à votre rythme, des quiz pour vérifier vos acquis et un certificat vérifiable à la fin.",
+      "link": "Voir le catalogue"
+    },
+    "media": {
+      "title": "Médiathèque",
+      "text": "Vidéos, enseignements audio et documents, avec une version allégée pour les petites connexions.",
+      "link": "Explorer les médias"
+    }
+  },
+  "app": {
+    "title": "Emportez APGO partout, même sans réseau",
+    "text": "L'application mobile garde la Bible, vos leçons et vos médias sur le téléphone. La taille de chaque téléchargement est affichée avant de commencer.",
+    "soon": "Bientôt disponible sur Android et iPhone."
+  }
+}

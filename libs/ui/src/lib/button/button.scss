@@ -1,0 +1,89 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apgo-spacing-sm);
+  min-height: 48px;
+  padding: 0 var(--apgo-spacing-lg);
+  border: 2px solid transparent;
+  border-radius: var(--apgo-radius-md);
+  font-family: var(--apgo-font-heading);
+  font-size: var(--apgo-font-size-base);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+:host(:focus-visible) {
+  outline: 3px solid var(--apgo-color-primary-dark);
+  outline-offset: 2px;
+}
+
+:host([data-size='lg']) {
+  min-height: 52px;
+  font-size: var(--apgo-font-size-lg);
+}
+
+:host([data-variant='primary']) {
+  background: var(--apgo-color-primary);
+  color: var(--apgo-color-on-primary);
+
+  &:hover {
+    background: var(--apgo-color-primary-dark);
+  }
+}
+
+:host([data-variant='secondary']) {
+  background: var(--apgo-color-background);
+  border-color: var(--apgo-color-primary);
+  color: var(--apgo-color-primary);
+
+  &:hover {
+    background: var(--apgo-color-primary-light);
+  }
+}
+
+// Variantes posées sur fond violet : le contour de focus passe au doré.
+:host([data-variant='accent']),
+:host([data-variant='inverse']) {
+  &:focus-visible {
+    outline-color: var(--apgo-color-accent);
+  }
+}
+
+:host([data-variant='accent']) {
+  background: var(--apgo-color-accent);
+  color: var(--apgo-color-primary-dark);
+
+  &:hover {
+    background: color-mix(
+      in srgb,
+      var(--apgo-color-accent) 85%,
+      var(--apgo-color-on-primary)
+    );
+  }
+}
+
+:host([data-variant='inverse']) {
+  background: transparent;
+  border-color: var(--apgo-color-on-primary);
+  color: var(--apgo-color-on-primary);
+
+  &:hover {
+    background: color-mix(
+      in srgb,
+      var(--apgo-color-on-primary) 12%,
+      transparent
+    );
+  }
+}
+
+:host([disabled]) {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

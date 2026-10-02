@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>APGO Admin · Tableau de bord</title>
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Inter:wght@400;500&amp;display=swap"
+        />
+        <style>
+          body {
+            margin: 0;
+          }
+          a {
+            color: #5b2a86;
+          }
+          a:hover {
+            color: #3e1b5e;
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          min-height: 900px;
+          display: flex;
+          flex-wrap: wrap;
+          background: #faf7fd;
+          font-family: Inter, 'Noto Sans', sans-serif;
+          color: #3e1b5e;
+          font-size: 16px;
+        "
+      >
+        <aside
+          style="
+            flex: 1 1 240px;
+            max-width: 100%;
+            background: #3e1b5e;
+            color: #ffffff;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            box-sizing: border-box;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              padding: 0 8px;
+            "
+          >
+            <span
+              style="
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: #5b2a86;
+                color: #d4a017;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Poppins, sans-serif;
+                font-weight: 700;
+              "
+              >A</span
+            >
+            <span
+              style="
+                font-family: Poppins, sans-serif;
+                font-weight: 600;
+                font-size: 18px;
+              "
+              >APGO Admin</span
+            >
+          </div>
+          <nav
+            aria-label="Administration"
+            style="display: flex; flex-direction: column; gap: 2px"
+          >
+            <sc-for list="{{menu}}" as="m" hint-placeholder-count="8">
+              <a href="#{{m.id}}" style="{{m.style}}">{{m.label}}</a>
+            </sc-for>
+          </nav>
+        </aside>
+
+        <main
+          style="
+            flex: 999 1 560px;
+            min-width: 0;
+            padding: 32px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: space-between;
+              gap: 16px;
+            "
+          >
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <h1
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 28px;
+                "
+              >
+                Tableau de bord
+              </h1>
+              <span style="color: #5b4a6b">Données des 30 derniers jours</span>
+            </div>
+            <button
+              style="
+                min-height: 44px;
+                padding: 0 20px;
+                border: 0;
+                border-radius: 8px;
+                background: #5b2a86;
+                color: #ffffff;
+                font-family: Poppins, sans-serif;
+                font-weight: 600;
+                font-size: 15px;
+                cursor: pointer;
+              "
+            >
+              Publier un contenu
+            </button>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 16px;
+            "
+          >
+            <sc-for list="{{kpis}}" as="k" hint-placeholder-count="4">
+              <div
+                style="
+                  background: #ffffff;
+                  border: 1px solid #e6dcf0;
+                  border-radius: 16px;
+                  padding: 20px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                "
+              >
+                <span style="font-size: 15px; color: #5b4a6b">{{k.label}}</span>
+                <span
+                  style="
+                    font-family: Poppins, sans-serif;
+                    font-weight: 600;
+                    font-size: 30px;
+                  "
+                  >{{k.value}}</span
+                >
+                <span style="font-size: 14px; color: #5b4a6b">{{k.sub}}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 24px;
+              align-items: flex-start;
+            "
+          >
+            <section
+              aria-labelledby="tickets"
+              style="
+                flex: 999 1 480px;
+                min-width: 0;
+                background: #ffffff;
+                border: 1px solid #e6dcf0;
+                border-radius: 16px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 12px;
+                "
+              >
+                <h2
+                  id="tickets"
+                  style="
+                    margin: 0;
+                    font-family: Poppins, sans-serif;
+                    font-weight: 600;
+                    font-size: 19px;
+                  "
+                >
+                  Service client · demandes ouvertes
+                </h2>
+                <a
+                  href="#support"
+                  style="
+                    font-weight: 500;
+                    min-height: 44px;
+                    display: inline-flex;
+                    align-items: center;
+                  "
+                  >Tout voir</a
+                >
+              </div>
+              <div style="overflow-x: auto">
+                <table
+                  style="
+                    width: 100%;
+                    min-width: 520px;
+                    border-collapse: collapse;
+                    font-size: 15px;
+                  "
+                >
+                  <thead>
+                    <tr style="text-align: left; color: #5b4a6b">
+                      <th
+                        scope="col"
+                        style="
+                          padding: 10px 8px;
+                          font-weight: 500;
+                          border-bottom: 1px solid #e6dcf0;
+                        "
+                      >
+                        Demande
+                      </th>
+                      <th
+                        scope="col"
+                        style="
+                          padding: 10px 8px;
+                          font-weight: 500;
+                          border-bottom: 1px solid #e6dcf0;
+                        "
+                      >
+                        Utilisateur
+                      </th>
+                      <th
+                        scope="col"
+                        style="
+                          padding: 10px 8px;
+                          font-weight: 500;
+                          border-bottom: 1px solid #e6dcf0;
+                        "
+                      >
+                        Sujet
+                      </th>
+                      <th
+                        scope="col"
+                        style="
+                          padding: 10px 8px;
+                          font-weight: 500;
+                          border-bottom: 1px solid #e6dcf0;
+                        "
+                      >
+                        Statut
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <sc-for
+                      list="{{tickets}}"
+                      as="t"
+                      hint-placeholder-count="4"
+                    >
+                      <tr>
+                        <td
+                          style="
+                            padding: 12px 8px;
+                            border-bottom: 1px solid #f0e8f7;
+                            font-weight: 500;
+                          "
+                        >
+                          {{t.id}}
+                        </td>
+                        <td
+                          style="
+                            padding: 12px 8px;
+                            border-bottom: 1px solid #f0e8f7;
+                          "
+                        >
+                          {{t.user}}
+                        </td>
+                        <td
+                          style="
+                            padding: 12px 8px;
+                            border-bottom: 1px solid #f0e8f7;
+                          "
+                        >
+                          {{t.subject}}
+                        </td>
+                        <td
+                          style="
+                            padding: 12px 8px;
+                            border-bottom: 1px solid #f0e8f7;
+                          "
+                        >
+                          <span style="{{t.badge}}">{{t.status}}</span>
+                        </td>
+                      </tr>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section
+              aria-labelledby="valider"
+              style="
+                flex: 1 1 300px;
+                min-width: 0;
+                background: #ffffff;
+                border: 1px solid #e6dcf0;
+                border-radius: 16px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <h2
+                id="valider"
+                style="
+                  margin: 0;
+                  font-family: Poppins, sans-serif;
+                  font-weight: 600;
+                  font-size: 19px;
+                "
+              >
+                À valider
+              </h2>
+              <sc-for list="{{pending}}" as="p" hint-placeholder-count="3">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #f0e8f7;
+                  "
+                >
+                  <div
+                    style="
+                      flex: 1;
+                      min-width: 0;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 2px;
+                    "
+                  >
+                    <span style="font-weight: 500">{{p.title}}</span>
+                    <span style="font-size: 14px; color: #5b4a6b"
+                      >{{p.meta}}</span
+                    >
+                  </div>
+                  <button
+                    style="
+                      min-height: 44px;
+                      padding: 0 14px;
+                      border: 1.5px solid #5b2a86;
+                      border-radius: 8px;
+                      background: #ffffff;
+                      color: #5b2a86;
+                      font: inherit;
+                      font-weight: 500;
+                      font-size: 15px;
+                      cursor: pointer;
+                    "
+                  >
+                    Examiner
+                  </button>
+                </div>
+              </sc-for>
+            </section>
+          </div>
+        </main>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"$preview":{"width":1280,"height":900}}'
+    >
+      class Component extends DCLogic {
+        renderVals() {
+          const item = 'min-height: 44px; display: flex; align-items: center; padding: 0 12px; border-radius: 8px; text-decoration: none; font-size: 15px; ';
+          const menu = [
+            ['dashboard', 'Tableau de bord'], ['users', 'Utilisateurs'], ['courses', 'Formations'],
+            ['media', 'Médiathèque'], ['bible', 'Bible'], ['certificates', 'Certificats'],
+            ['support', 'Service client'], ['settings', 'Paramètres']
+          ].map(([id, label], i) => ({
+            id, label,
+            style: item + (i === 0 ? 'background: #5B2A86; color: #FFFFFF; font-weight: 500;' : 'background: transparent; color: #E9DFF3;')
+          }));
+          const badge = {
+            'Nouvelle': 'background: #F4EEFA; color: #5B2A86;',
+            'En cours': 'background: #FFF4E5; color: #7A3A00;',
+            'Résolue': 'background: #E8F5E9; color: #1B5E20;'
+          };
+          const pill = 'display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 14px; font-weight: 500; ';
+          return {
+            menu,
+            kpis: [
+              { label: 'Utilisateurs actifs', value: '[N]', sub: 'Web et mobile' },
+              { label: 'Inscriptions aux formations', value: '[N]', sub: '[N] formations ouvertes' },
+              { label: 'Certificats délivrés', value: '[N]', sub: 'Sur la période' },
+              { label: 'Demandes ouvertes', value: '[N]', sub: 'Délai moyen : [durée]' }
+            ],
+            tickets: [
+              { id: '#[0001]', user: '[Nom]', subject: 'Certificat introuvable', status: 'Nouvelle' },
+              { id: '#[0002]', user: '[Nom]', subject: 'Téléchargement bloqué', status: 'En cours' },
+              { id: '#[0003]', user: '[Nom]', subject: 'Mot de passe oublié', status: 'En cours' },
+              { id: '#[0004]', user: '[Nom]', subject: 'Erreur dans une leçon', status: 'Résolue' }
+            ].map((t) => ({ ...t, badge: pill + badge[t.status] })),
+            pending: [
+              { title: '[Titre de la leçon]', meta: 'Formation · envoyé par [formateur]' },
+              { title: '[Titre de la vidéo]', meta: 'Médiathèque · [taille] Mo' },
+              { title: '[Chapitre]', meta: 'Bible gouro · audio' }
+            ]
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

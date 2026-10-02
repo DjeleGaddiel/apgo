@@ -1,0 +1,175 @@
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+// Bandeau d'ouverture
+.hero {
+  background: var(--apgo-color-primary);
+  color: var(--apgo-color-on-primary);
+}
+
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--apgo-spacing-xl);
+  padding-block: calc(var(--apgo-spacing-xl) * 1.5);
+}
+
+.hero-text {
+  display: flex;
+  flex: 999 1 520px;
+  flex-direction: column;
+  gap: var(--apgo-spacing-lg);
+  min-width: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.intro {
+  max-width: 560px;
+  margin: 0;
+  font-size: var(--apgo-font-size-lg);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--apgo-spacing-md);
+}
+
+.hero-verse {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+// Les trois services
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apgo-spacing-xl);
+  padding-block: calc(var(--apgo-spacing-xl) * 2);
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--apgo-spacing-lg);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  apgo-card {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  h3 {
+    font-size: var(--apgo-font-size-xl);
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.pillar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--apgo-color-primary);
+  color: var(--apgo-color-on-primary);
+}
+
+.pillar-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: auto;
+  color: var(--apgo-color-primary);
+  font-weight: 500;
+}
+
+// Application mobile
+.app {
+  background: var(--apgo-color-primary-light);
+}
+
+.app-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--apgo-spacing-xl) * 1.25);
+  padding-block: calc(var(--apgo-spacing-xl) * 2);
+}
+
+.app-text {
+  display: flex;
+  flex: 999 1 480px;
+  flex-direction: column;
+  gap: var(--apgo-spacing-md);
+  min-width: 0;
+
+  p {
+    max-width: 560px;
+    margin: 0;
+    font-size: var(--apgo-font-size-lg);
+    line-height: 1.6;
+  }
+}
+
+.soon {
+  display: flex;
+  align-items: center;
+  gap: var(--apgo-spacing-sm);
+  font-weight: 500;
+}
+
+.phone {
+  display: flex;
+  flex: 1 1 220px;
+  flex-direction: column;
+  max-width: 220px;
+  height: 400px;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 8px solid var(--apgo-color-primary-dark);
+  border-radius: 32px;
+  background: var(--apgo-color-background);
+}
+
+.phone-header {
+  height: 96px;
+  background: var(--apgo-color-primary);
+}
+
+.phone-verse {
+  height: 120px;
+  margin: -24px 14px 0;
+  border-radius: 12px;
+  background: var(--apgo-color-primary-dark);
+}
+
+.phone-row {
+  height: 56px;
+  margin: 12px 14px 0;
+  border-radius: 10px;
+  background: var(--apgo-color-primary-light);
+}

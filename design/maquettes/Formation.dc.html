@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>APGO · Formation</title>
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Source+Serif+4:wght@400;700&amp;display=swap"
+        />
+        <style>
+          body {
+            margin: 0;
+          }
+          a {
+            color: #5b2a86;
+          }
+          a:hover {
+            color: #3e1b5e;
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          width: 390px;
+          height: 844px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          background: #ffffff;
+          font-family: Inter, 'Noto Sans', sans-serif;
+          color: #3e1b5e;
+          font-size: 16px;
+          overflow: hidden;
+        "
+      >
+        <header
+          style="
+            background: #5b2a86;
+            color: #ffffff;
+            padding: 12px 16px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          "
+        >
+          <a
+            href="Main.dc.html"
+            aria-label="Retour"
+            style="
+              width: 44px;
+              height: 44px;
+              border-radius: 22px;
+              background: rgba(255, 255, 255, 0.12);
+              color: #ffffff;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </a>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <span
+              style="
+                align-self: flex-start;
+                padding: 4px 10px;
+                border-radius: 999px;
+                background: #3e1b5e;
+                color: #d4a017;
+                font-size: 13px;
+                font-weight: 500;
+              "
+              >Avec certificat</span
+            >
+            <h1
+              style="
+                margin: 0;
+                font-family: Poppins, sans-serif;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 1.3;
+              "
+            >
+              [Titre de la formation]
+            </h1>
+            <span style="font-size: 15px; opacity: 0.9"
+              >Par [Nom du formateur] · 8 leçons</span
+            >
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+              "
+            >
+              <span>Progression</span><span>3 / 8</span>
+            </div>
+            <div
+              role="progressbar"
+              aria-valuenow="37"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Progression de la formation"
+              style="
+                height: 8px;
+                border-radius: 4px;
+                background: rgba(255, 255, 255, 0.25);
+                overflow: hidden;
+              "
+            >
+              <div
+                style="
+                  width: 37%;
+                  height: 100%;
+                  background: #d4a017;
+                  border-radius: 4px;
+                "
+              ></div>
+            </div>
+          </div>
+        </header>
+
+        <main
+          style="
+            flex: 1;
+            overflow: hidden;
+            padding: 20px 16px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          "
+        >
+          <h2
+            style="
+              margin: 0;
+              font-family: Poppins, sans-serif;
+              font-weight: 600;
+              font-size: 18px;
+            "
+          >
+            Leçons
+          </h2>
+          <ol
+            style="
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+            "
+          >
+            <sc-for list="{{lessons}}" as="l" hint-placeholder-count="6">
+              <li style="{{l.rowStyle}}">
+                <sc-if value="{{l.done}}" hint-placeholder-val="{{ false }}">
+                  <span
+                    aria-label="Terminée"
+                    style="
+                      width: 32px;
+                      height: 32px;
+                      flex: none;
+                      border-radius: 16px;
+                      background: #2e7d32;
+                      color: #ffffff;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg>
+                  </span>
+                </sc-if>
+                <sc-if value="{{l.current}}" hint-placeholder-val="{{ false }}">
+                  <span
+                    aria-label="En cours"
+                    style="
+                      width: 32px;
+                      height: 32px;
+                      flex: none;
+                      border-radius: 16px;
+                      background: #5b2a86;
+                      color: #ffffff;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M7 4l13 8-13 8z"></path>
+                    </svg>
+                  </span>
+                </sc-if>
+                <sc-if value="{{l.locked}}" hint-placeholder-val="{{ true }}">
+                  <span
+                    aria-label="À venir"
+                    style="
+                      width: 32px;
+                      height: 32px;
+                      flex: none;
+                      border-radius: 16px;
+                      border: 2px solid #c9b8da;
+                      color: #6b5a7b;
+                      box-sizing: border-box;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 14px;
+                      font-weight: 500;
+                    "
+                    >{{l.n}}</span
+                  >
+                </sc-if>
+                <div
+                  style="
+                    flex: 1;
+                    min-width: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                  "
+                >
+                  <span style="font-weight: 500">{{l.title}}</span>
+                  <span style="font-size: 14px; color: #6b5a7b"
+                    >{{l.meta}}</span
+                  >
+                </div>
+              </li>
+            </sc-for>
+          </ol>
+        </main>
+
+        <div style="padding: 12px 16px; border-top: 1px solid #e6dcf0">
+          <button
+            style="
+              width: 100%;
+              min-height: 52px;
+              border: 0;
+              border-radius: 8px;
+              background: #5b2a86;
+              color: #ffffff;
+              font-family: Poppins, sans-serif;
+              font-weight: 600;
+              font-size: 17px;
+              cursor: pointer;
+            "
+          >
+            Reprendre la leçon 3
+          </button>
+        </div>
+
+        <nav
+          aria-label="Navigation principale"
+          style="
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #e6dcf0;
+            background: #ffffff;
+            padding: 6px 4px 14px;
+          "
+        >
+          <a
+            href="Main.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"
+              ></path></svg
+            >Accueil
+          </a>
+          <a
+            href="Bible.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"></path>
+              <path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"></path></svg
+            >Bible
+          </a>
+          <a
+            href="Formation.dc.html"
+            aria-current="page"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #5b2a86;
+              text-decoration: none;
+              font-size: 13px;
+              font-weight: 500;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M2 9l10-5 10 5-10 5z"></path>
+              <path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg
+            >Formations
+          </a>
+          <a
+            href="Mediatheque.dc.html"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M10 9l5 3-5 3z"></path></svg
+            >Médias
+          </a>
+          <a
+            href="#compte"
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+              min-width: 64px;
+              min-height: 52px;
+              justify-content: center;
+              color: #6b5a7b;
+              text-decoration: none;
+              font-size: 13px;
+            "
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path></svg
+            >Compte
+          </a>
+        </nav>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"$preview":{"width":390,"height":844}}'
+    >
+      class Component extends DCLogic {
+        renderVals() {
+          const row = 'display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; min-height: 44px; ';
+          const raw = [
+            { n: 1, title: '[Leçon 1]', meta: 'Vidéo · [durée] · terminée', s: 'done' },
+            { n: 2, title: '[Leçon 2]', meta: 'Lecture · terminée', s: 'done' },
+            { n: 3, title: '[Leçon 3]', meta: 'Vidéo · [durée] · en cours', s: 'current' },
+            { n: 4, title: '[Leçon 4]', meta: 'Quiz · 10 questions', s: 'locked' },
+            { n: 5, title: '[Leçon 5]', meta: 'Vidéo · [durée]', s: 'locked' },
+            { n: 6, title: '[Leçon 6]', meta: 'Lecture', s: 'locked' }
+          ];
+          return {
+            lessons: raw.map((l) => ({
+              ...l,
+              done: l.s === 'done',
+              current: l.s === 'current',
+              locked: l.s === 'locked',
+              rowStyle: row + (l.s === 'current' ? 'background: #F4EEFA;' : 'background: transparent;')
+            }))
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

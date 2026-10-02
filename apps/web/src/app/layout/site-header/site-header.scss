@@ -1,0 +1,113 @@
+header {
+  border-bottom: 1px solid var(--apgo-color-border);
+  background: var(--apgo-color-background);
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--apgo-spacing-md);
+  padding-block: var(--apgo-spacing-sm);
+}
+
+.brand {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: var(--apgo-radius-md);
+  background: var(--apgo-color-primary-light);
+  color: var(--apgo-color-primary);
+  cursor: pointer;
+}
+
+// Téléphone : le menu se déplie sous la barre.
+.menu {
+  display: none;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: var(--apgo-spacing-md);
+  padding-bottom: var(--apgo-spacing-md);
+
+  &.open {
+    display: flex;
+  }
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-inline: var(--apgo-spacing-sm);
+  border-radius: var(--apgo-radius-md);
+  color: var(--apgo-color-text);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--apgo-color-primary-light);
+  }
+
+  &.active {
+    color: var(--apgo-color-primary);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+}
+
+.account {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--apgo-spacing-sm);
+
+  a {
+    flex: 1 1 auto;
+  }
+}
+
+// Grand écran : tout tient sur une ligne.
+@media (min-width: 1024px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu,
+  .menu.open {
+    display: flex;
+    flex: 1;
+    flex-basis: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  ul {
+    flex-direction: row;
+    gap: var(--apgo-spacing-sm);
+    margin-inline: auto;
+  }
+
+  .account a {
+    flex: none;
+  }
+}

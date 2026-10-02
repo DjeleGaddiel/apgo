@@ -1,0 +1,19 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--apgo-spacing-md);
+  padding-block: calc(var(--apgo-spacing-xl) * 2);
+}
+
+h1 {
+  margin: 0;
+  font-size: var(--apgo-font-size-xxl);
+}
+
+p {
+  max-width: 560px;
+  margin: 0;
+  font-size: var(--apgo-font-size-lg);
+  line-height: 1.6;
+}
