@@ -1,0 +1,122 @@
+// Schéma de la base PostgreSQL de l'API. Modifications : skill `db-migration`.
+// Modèles en anglais, au singulier ; tables en snake_case au pluriel.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// État d'un compte. Un formateur reste `PENDING` jusqu'à sa validation par un admin.
+/// Un compte supprimé est anonymisé et passe à `DELETED` : l'historique (audit, certificats) reste cohérent.
+enum UserStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+model User {
+  id                 String     @id @default(uuid()) @db.Uuid
+  /// Toujours enregistré en minuscules.
+  email              String     @unique
+  passwordHash       String
+  firstName          String
+  lastName           String
+  status             UserStatus @default(ACTIVE)
+  /// Langue de l'interface et des emails (`fr`, puis `goa`).
+  locale             String     @default("fr")
+  roleId             String     @db.Uuid
+  role               Role       @relation(fields: [roleId], references: [id])
+  /// Secret TOTP chiffré (AES-256-GCM) ; null tant que la double authentification n'est pas configurée.
+  twoFactorSecret    String?
+  twoFactorEnabledAt DateTime?
+  /// Limitation des tentatives de connexion par compte.
+  failedLoginCount   Int        @default(0)
+  lockedUntil        DateTime?
+  lastLoginAt        DateTime?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+
+  refreshTokens RefreshToken[]
+  auditLogs     AuditLog[]
+
+  @@index([roleId])
+  @@index([status])
+  @@map("users")
+}
+
+/// Rôle configurable : ses permissions sont des données, un rôle peut être ajouté sans changer le code.
+model Role {
+  id                String           @id @default(uuid()) @db.Uuid
+  /// Identifiant stable utilisé par le code (`SUPER_ADMIN`, `TRAINER`…).
+  key               String           @unique
+  name              String
+  description       String           @default("")
+  /// Rôle livré avec l'application : ni supprimable ni renommable.
+  isSystem          Boolean          @default(false)
+  /// Double authentification obligatoire (super admin, admin APGO).
+  requiresTwoFactor Boolean          @default(false)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  permissions       RolePermission[]
+  users             User[]
+
+  @@map("roles")
+}
+
+/// Permission accordée à un rôle. `permission` est l'un des codes déclarés dans `modules/access/permissions.ts`.
+model RolePermission {
+  roleId     String   @db.Uuid
+  role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission String
+  createdAt  DateTime @default(now())
+
+  @@id([roleId, permission])
+  @@map("role_permissions")
+}
+
+/// Jeton de renouvellement : seul son empreinte SHA-256 est stockée. Renouvelé à chaque usage ;
+/// tous les jetons d'une même famille sont révoqués si un jeton déjà utilisé est présenté à nouveau.
+model RefreshToken {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash  String    @unique
+  familyId   String    @db.Uuid
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  usedAt     DateTime?
+  userAgent  String?
+  ip         String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([familyId])
+  @@map("refresh_tokens")
+}
+
+/// Journal des actions des administrateurs. Jamais modifié ni supprimé par l'application.
+model AuditLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  actorId    String?  @db.Uuid
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  /// Action en `domaine.verbe` : `user.approve`, `user.suspend`…
+  action     String
+  targetType String
+  targetId   String?
+  metadata   Json     @default("{}")
+  ip         String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([actorId])
+  @@index([targetType, targetId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
