@@ -1,0 +1,12 @@
+name: apgo_design
+description: Couleurs, polices et espacements APGO pour Flutter (générés depuis design/tokens).
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+  flutter: '>=3.32.0'
+
+dependencies:
+  flutter:
+    sdk: flutter

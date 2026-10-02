@@ -1,0 +1,19 @@
+@use '../../../libs/ui/src/styles/tokens';
+
+html {
+  font-size: var(--apgo-font-size-base);
+}
+
+body {
+  margin: 0;
+  font-family: var(--apgo-font-body);
+  color: var(--apgo-color-text);
+  background: var(--apgo-color-background);
+}
+
+h1,
+h2,
+h3,
+button {
+  font-family: var(--apgo-font-heading);
+}

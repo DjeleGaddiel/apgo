@@ -34,3 +34,9 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+.angular
+
+__screenshots__/
+
+vitest.config.*.timestamp*
