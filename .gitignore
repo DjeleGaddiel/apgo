@@ -1,0 +1,36 @@
+# Dépendances
+node_modules/
+.pnpm-store/
+
+# Builds
+dist/
+build/
+tmp/
+out-tsc/
+.angular/
+.nx/cache/
+.nx/workspace-data/
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.iml
+
+# Environnement et secrets
+.env
+.env.*
+!.env.example
+
+# Claude Code (réglages locaux)
+.claude/settings.local.json
+
+# Divers
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
